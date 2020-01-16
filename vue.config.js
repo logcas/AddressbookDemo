@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/addressbook',
   css: {
     loaderOptions: {
       postcss: {

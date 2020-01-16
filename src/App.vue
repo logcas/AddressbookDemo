@@ -1,12 +1,12 @@
 <template>
-  <div class="address-book" ref="addressBook">
+  <div class="address-book" ref="addressBook" @touchend.prevent="handleTouchEnd">
     <dl
       class="letter-list"
       :class="{
         active: selectingLetter
       }"
-      @touchmove.stop="handleTouchMove"
-      @touchend="handleTouchEnd"
+      @touchmove.prevent="handleTouchMove"
+      @touchstart.prevent="handleTouchStart"
     >
       <dt
         v-for="item in letters"
@@ -147,15 +147,20 @@ export default {
     go(offset) {
       this.$refs.addressBook.scrollTop = offset;
     },
+    handleTouchStart(e) {
+      if (!this.selectingLetter) {
+        this.indexBarPosX = e.touches[0].clientX;
+      }
+      this.selectingLetter = true;
+    },
     handleTouchEnd() {
       this.prevOffset = -9999;
       this.selectingLetter = false;
     },
     handleTouchMove(e) {
       if (!this.selectingLetter) {
-        this.indexBarPosX = e.touches[0].clientX;
+        return;
       }
-      this.selectingLetter = true;
       const x = this.indexBarPosX;
       const y = e.touches[0].clientY;
       let target = document.elementFromPoint(x, y);
