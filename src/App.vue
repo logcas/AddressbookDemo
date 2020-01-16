@@ -1,12 +1,12 @@
 <template>
-  <div class="address-book" ref="addressBook" @touchend.prevent="handleTouchEnd">
+  <div class="address-book" ref="addressBook" @touchend="handleTouchEnd">
     <dl
       class="letter-list"
       :class="{
         active: selectingLetter
       }"
       @touchmove.prevent="handleTouchMove"
-      @touchstart.prevent="handleTouchStart"
+      @touchstart="handleTouchStart"
     >
       <dt
         v-for="item in letters"
