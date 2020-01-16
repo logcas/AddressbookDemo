@@ -13,6 +13,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "postcss-pxtorem": "^4.0.1",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
